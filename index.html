@@ -17,10 +17,11 @@
     --blue: #58a6ff;
     --violet: #bc8cff;
     --green: #3fb950;
-  --cyan: #00d4ff;
+    --cyan: #00d4ff;
     --yellow: #d29922;
     --orange: #f0883e;
     --red: #f85149;
+    --teal: #2d6a6a;
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   body { font-family:'Inter',system-ui,-apple-system,sans-serif; background:var(--bg); color:var(--text); min-height:100vh; }
@@ -33,9 +34,9 @@
   .filter-group { display:flex; flex-direction:column; gap:4px; }
   .filter-group label { font-size:11px; text-transform:uppercase; letter-spacing:.5px; color:var(--text-muted); font-weight:600; }
   .filter-group select { background:var(--bg); color:var(--text); border:1px solid var(--border); border-radius:8px; padding:8px 12px; font-size:13px; cursor:pointer; outline:none; }
-  .filter-group select:focus { border-color:var(--accent-light); }
+  .filter-group select:focus { border-color:var(--cyan); }
   .filter-count { margin-left:auto; font-size:13px; color:var(--text-muted); }
-  .filter-count strong { color:var(--accent-light); }
+  .filter-count strong { color:var(--cyan); }
 
   .container { max-width:1200px; margin:0 auto; padding:32px; }
 
@@ -48,12 +49,15 @@
   .product-badge { font-size:11px; font-weight:700; text-transform:uppercase; padding:4px 10px; border-radius:20px; }
   .badge-p2 { background:rgba(88,166,255,.15); color:var(--blue); }
   .badge-p3 { background:rgba(188,140,255,.15); color:var(--violet); }
-  .badge-p4 { background:rgba(63,185,80,.15); color:var(--green); }
-  .badge-p5 { background:rgba(248,81,73,.15); color:var(--red); }
-  .badge-p6 { background:rgba(139,148,158,.2); color:#b0b8c1; }
-  .badge-p7 { background:rgba(188,140,255,.15); color:var(--violet); }
-  .badge-p8 { background:rgba(240,136,62,.15); color:var(--orange); }
-  .badge-p9 { background:rgba(45,106,106,.3); color:var(--accent-light); }
+  .badge-p4 { background:rgba(0,212,255,.15); color:var(--cyan); }
+  .badge-p5 { background:rgba(63,185,80,.15); color:var(--green); }
+  .badge-p6 { background:rgba(210,153,34,.15); color:var(--yellow); }
+  .badge-p7 { background:rgba(240,136,62,.15); color:var(--orange); }
+  .badge-p8 { background:rgba(248,81,73,.15); color:var(--red); }
+  .badge-p9 { background:rgba(139,148,158,.2); color:#b0b8c1; }
+  .badge-p10 { background:rgba(188,140,255,.15); color:var(--violet); }
+  .badge-p11 { background:rgba(240,136,62,.15); color:var(--orange); }
+  .badge-p12 { background:rgba(45,106,106,.3); color:var(--accent-light); }
   .product-name { font-size:18px; font-weight:600; color:var(--white); }
   .product-stats { display:flex; gap:16px; }
   .stat { font-size:12px; color:var(--text-muted); }
@@ -118,7 +122,7 @@
 
 <div class="header">
   <h1>🏦 Funcionalidades HMBK</h1>
-  <p>Inventario de productos y funcionalidades · Tarjeta de Crédito, Débito, Ahorros, Depósitos, PLD, Seguros &amp; Beneficios</p>
+  <p>Inventario de productos y funcionalidades · 11 productos priorizados</p>
 </div>
 
 <div class="filters">
@@ -128,11 +132,14 @@
       <option value="all">Todos</option>
       <option value="credito">Tarjeta de Crédito</option>
       <option value="debito">Tarjeta de Débito</option>
-      <option value="ahorra">Ahorra Más &amp; Depósito Garantía</option>
-      <option value="dpf-cts">DPF &amp; CTS</option>
+      <option value="ahorra-soles">Ahorra Más Soles</option>
+      <option value="ahorra-dolares">Ahorra Más Dólares</option>
+      <option value="deposito">Depósito Garantía</option>
+      <option value="dpf">DPF</option>
+      <option value="cts">CTS</option>
       <option value="pld">PLD</option>
       <option value="seguros">Seguros</option>
-      <option value="beneficios">Mis beneficios</option>
+      <option value="beneficios">Mis Beneficios</option>
       <option value="login">Login</option>
     </select>
   </div>
@@ -162,13 +169,13 @@
       <option value="without-date">Sin fecha</option>
     </select>
   </div>
-  <span class="filter-count">Mostrando <strong id="count-display">18</strong> registros</span>
+  <span class="filter-count">Mostrando <strong id="count-display">64</strong> registros</span>
 </div>
 
 <div class="container">
 
   <!-- ═══════════════════════════════════════ -->
-  <!-- TARJETA DE CRÉDITO                      -->
+  <!-- 2. TARJETA DE CRÉDITO                  -->
   <!-- ═══════════════════════════════════════ -->
   <div class="product-card" data-product="credito">
     <div class="product-header">
@@ -255,71 +262,23 @@
       <h3>Registro de entregables</h3>
       <table>
         <thead>
-          <tr>
-            <th>#</th>
-            <th>Función</th>
-            <th>Nivel</th>
-            <th>Estado</th>
-            <th>Fecha entrega</th>
-          </tr>
+          <tr><th>#</th><th>Función</th><th>Nivel</th><th>Estado</th><th>Fecha entrega</th></tr>
         </thead>
         <tbody>
-          <tr data-status="definido" data-level="principal" data-product="credito" data-has-date="true">
-            <td class="td-id">1</td>
-            <td class="td-name">Vista producto</td>
-            <td class="td-level level-principal">Principal</td>
-            <td><span class="tree-status status-definido">Diseñado</span></td>
-            <td class="table-date">16/10/2026</td>
-          </tr>
-          <tr data-status="definido" data-level="principal" data-product="credito" data-has-date="true">
-            <td class="td-id">2</td>
-            <td class="td-name">Pasar a cuotas</td>
-            <td class="td-level level-principal">Principal</td>
-            <td><span class="tree-status status-definido">Diseñado</span></td>
-            <td class="table-date">16/10/2026</td>
-          </tr>
-          <tr data-status="definido" data-level="principal" data-product="credito" data-has-date="false">
-            <td class="td-id">3</td>
-            <td class="td-name">EECC (Estados de cuenta)</td>
-            <td class="td-level level-principal">Principal</td>
-            <td><span class="tree-status status-definido">Diseñado</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="definido" data-level="principal" data-product="credito" data-has-date="false">
-            <td class="td-id">4</td>
-            <td class="td-name">Pagar mi TC</td>
-            <td class="td-level level-principal">Principal</td>
-            <td><span class="tree-status status-definido">Diseñado</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="definido" data-level="sub-flujo" data-product="credito" data-has-date="false">
-            <td class="td-id">4.1</td>
-            <td class="td-name" style="padding-left:28px;">↳ Cancelar TC</td>
-            <td class="td-level level-sub">Sub-flujo</td>
-            <td><span class="tree-status status-definido">Diseñado</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="definido" data-level="principal" data-product="credito" data-has-date="false">
-            <td class="td-id">5</td>
-            <td class="td-name">Configuración de TC</td>
-            <td class="td-level level-principal">Principal</td>
-            <td><span class="tree-status status-definido">Diseñado</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="definido" data-level="sub-flujo" data-product="credito" data-has-date="false">
-            <td class="td-id">5.1</td>
-            <td class="td-name" style="padding-left:28px;">↳ Solicitar tarjeta adicional</td>
-            <td class="td-level level-sub">Sub-flujo</td>
-            <td><span class="tree-status status-definido">Diseñado</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
+          <tr data-status="definido" data-level="principal" data-product="credito" data-has-date="true"><td class="td-id">1</td><td class="td-name">Vista producto</td><td class="td-level level-principal">Principal</td><td><span class="tree-status status-definido">Diseñado</span></td><td class="table-date">16/10/2026</td></tr>
+          <tr data-status="definido" data-level="principal" data-product="credito" data-has-date="true"><td class="td-id">2</td><td class="td-name">Pasar a cuotas</td><td class="td-level level-principal">Principal</td><td><span class="tree-status status-definido">Diseñado</span></td><td class="table-date">16/10/2026</td></tr>
+          <tr data-status="definido" data-level="principal" data-product="credito" data-has-date="false"><td class="td-id">3</td><td class="td-name">EECC (Estados de cuenta)</td><td class="td-level level-principal">Principal</td><td><span class="tree-status status-definido">Diseñado</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="definido" data-level="principal" data-product="credito" data-has-date="false"><td class="td-id">4</td><td class="td-name">Pagar mi TC</td><td class="td-level level-principal">Principal</td><td><span class="tree-status status-definido">Diseñado</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="definido" data-level="sub-flujo" data-product="credito" data-has-date="false"><td class="td-id">4.1</td><td class="td-name" style="padding-left:28px;">↳ Cancelar TC</td><td class="td-level level-sub">Sub-flujo</td><td><span class="tree-status status-definido">Diseñado</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="definido" data-level="principal" data-product="credito" data-has-date="false"><td class="td-id">5</td><td class="td-name">Configuración de TC</td><td class="td-level level-principal">Principal</td><td><span class="tree-status status-definido">Diseñado</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="definido" data-level="sub-flujo" data-product="credito" data-has-date="false"><td class="td-id">5.1</td><td class="td-name" style="padding-left:28px;">↳ Solicitar tarjeta adicional</td><td class="td-level level-sub">Sub-flujo</td><td><span class="tree-status status-definido">Diseñado</span></td><td class="table-date date-placeholder">—</td></tr>
         </tbody>
       </table>
     </div>
   </div>
 
   <!-- ═══════════════════════════════════════ -->
-  <!-- TARJETA DE DÉBITO                       -->
+  <!-- 3. TARJETA DE DÉBITO                   -->
   <!-- ═══════════════════════════════════════ -->
   <div class="product-card" data-product="debito">
     <div class="product-header">
@@ -366,34 +325,10 @@
                       <span class="tree-status status-diseno">En diseño</span>
                     </div>
                     <ul>
-                      <li>
-                        <div class="tree-node color-violet color-green-border">
-                          <span class="tree-toggle leaf">▶</span>
-                          <span class="tree-label">Datos de TD</span>
-                          <span class="tree-status status-diseno">En diseño</span>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="tree-node color-violet">
-                          <span class="tree-toggle leaf">▶</span>
-                          <span class="tree-label">Bloqueo temporal</span>
-                          <span class="tree-status status-diseno">En diseño</span>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="tree-node color-violet">
-                          <span class="tree-toggle leaf">▶</span>
-                          <span class="tree-label">Eliminar tarjeta</span>
-                          <span class="tree-status status-por-disenar">Por diseñar</span>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="tree-node color-violet">
-                          <span class="tree-toggle leaf">▶</span>
-                          <span class="tree-label">Permisos</span>
-                          <span class="tree-status status-diseno">En diseño</span>
-                        </div>
-                      </li>
+                      <li><div class="tree-node color-violet color-green-border"><span class="tree-toggle leaf">▶</span><span class="tree-label">Datos de TD</span><span class="tree-status status-diseno">En diseño</span></div></li>
+                      <li><div class="tree-node color-violet"><span class="tree-toggle leaf">▶</span><span class="tree-label">Bloqueo temporal</span><span class="tree-status status-diseno">En diseño</span></div></li>
+                      <li><div class="tree-node color-violet"><span class="tree-toggle leaf">▶</span><span class="tree-label">Eliminar tarjeta</span><span class="tree-status status-por-disenar">Por diseñar</span></div></li>
+                      <li><div class="tree-node color-violet"><span class="tree-toggle leaf">▶</span><span class="tree-label">Permisos</span><span class="tree-status status-diseno">En diseño</span></div></li>
                     </ul>
                   </li>
                   <li>
@@ -404,41 +339,11 @@
                       <span class="tree-status status-diseno">En diseño</span>
                     </div>
                     <ul>
-                      <li>
-                        <div class="tree-node color-violet color-green-border">
-                          <span class="tree-toggle leaf">▶</span>
-                          <span class="tree-label">Datos de TD</span>
-                          <span class="tree-status status-diseno">En diseño</span>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="tree-node color-violet">
-                          <span class="tree-toggle leaf">▶</span>
-                          <span class="tree-label">Cambio de PIN</span>
-                          <span class="tree-status status-por-disenar">Por diseñar</span>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="tree-node color-violet">
-                          <span class="tree-toggle leaf">▶</span>
-                          <span class="tree-label">Bloqueo temporal</span>
-                          <span class="tree-status status-por-disenar">Por diseñar</span>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="tree-node color-violet">
-                          <span class="tree-toggle leaf">▶</span>
-                          <span class="tree-label">Bloqueo por robo</span>
-                          <span class="tree-status status-por-disenar">Por diseñar</span>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="tree-node color-violet">
-                          <span class="tree-toggle leaf">▶</span>
-                          <span class="tree-label">Permisos</span>
-                          <span class="tree-status status-diseno">En diseño</span>
-                        </div>
-                      </li>
+                      <li><div class="tree-node color-violet color-green-border"><span class="tree-toggle leaf">▶</span><span class="tree-label">Datos de TD</span><span class="tree-status status-diseno">En diseño</span></div></li>
+                      <li><div class="tree-node color-violet"><span class="tree-toggle leaf">▶</span><span class="tree-label">Cambio de PIN</span><span class="tree-status status-por-disenar">Por diseñar</span></div></li>
+                      <li><div class="tree-node color-violet"><span class="tree-toggle leaf">▶</span><span class="tree-label">Bloqueo temporal</span><span class="tree-status status-por-disenar">Por diseñar</span></div></li>
+                      <li><div class="tree-node color-violet"><span class="tree-toggle leaf">▶</span><span class="tree-label">Bloqueo por robo</span><span class="tree-status status-por-disenar">Por diseñar</span></div></li>
+                      <li><div class="tree-node color-violet"><span class="tree-toggle leaf">▶</span><span class="tree-label">Permisos</span><span class="tree-status status-diseno">En diseño</span></div></li>
                     </ul>
                   </li>
                 </ul>
@@ -453,7 +358,7 @@
               <li>
                 <div class="tree-node color-violet">
                   <span class="tree-toggle leaf">▶</span>
-                  <span class="tree-label">Configuración* ⚙️</span>
+                  <span class="tree-label">Configuración* ️</span>
                   <span class="tree-status status-diseno">En diseño</span>
                 </div>
               </li>
@@ -473,137 +378,38 @@
     <div class="table-section">
       <h3>Registro de entregables</h3>
       <table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Función</th>
-            <th>Nivel</th>
-            <th>Estado</th>
-            <th>Fecha entrega</th>
-          </tr>
-        </thead>
+        <thead><tr><th>#</th><th>Función</th><th>Nivel</th><th>Estado</th><th>Fecha entrega</th></tr></thead>
         <tbody>
-          <tr data-status="diseno" data-level="principal" data-product="debito" data-has-date="false">
-            <td class="td-id">1</td>
-            <td class="td-name">Consultar saldos y movimientos</td>
-            <td class="td-level level-principal">Principal</td>
-            <td><span class="tree-status status-diseno">En diseño</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="diseno" data-level="principal" data-product="debito" data-has-date="false">
-            <td class="td-id">2</td>
-            <td class="td-name">Detalle de tarjetas</td>
-            <td class="td-level level-principal">Principal</td>
-            <td><span class="tree-status status-diseno">En diseño</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="diseno" data-level="sub-funcion" data-product="debito" data-has-date="false">
-            <td class="td-id">2.1</td>
-            <td class="td-name" style="padding-left:28px;">↳ Virtual</td>
-            <td class="td-level level-sub">Sub-función</td>
-            <td><span class="tree-status status-diseno">En diseño</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="diseno" data-level="sub-flujo" data-product="debito" data-has-date="false">
-            <td class="td-id">2.1.1</td>
-            <td class="td-name" style="padding-left:44px;">↳ Datos de TD</td>
-            <td class="td-level level-sub">Sub-flujo</td>
-            <td><span class="tree-status status-diseno">En diseño</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="diseno" data-level="sub-flujo" data-product="debito" data-has-date="false">
-            <td class="td-id">2.1.2</td>
-            <td class="td-name" style="padding-left:44px;">↳ Bloqueo temporal</td>
-            <td class="td-level level-sub">Sub-flujo</td>
-            <td><span class="tree-status status-diseno">En diseño</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="por-disenar" data-level="sub-flujo" data-product="debito" data-has-date="false">
-            <td class="td-id">2.1.3</td>
-            <td class="td-name" style="padding-left:44px;">↳ Eliminar tarjeta</td>
-            <td class="td-level level-sub">Sub-flujo</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="diseno" data-level="sub-flujo" data-product="debito" data-has-date="false">
-            <td class="td-id">2.1.4</td>
-            <td class="td-name" style="padding-left:44px;">↳ Permisos</td>
-            <td class="td-level level-sub">Sub-flujo</td>
-            <td><span class="tree-status status-diseno">En diseño</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="diseno" data-level="sub-funcion" data-product="debito" data-has-date="false">
-            <td class="td-id">2.2</td>
-            <td class="td-name" style="padding-left:28px;">↳ Física</td>
-            <td class="td-level level-sub">Sub-función</td>
-            <td><span class="tree-status status-diseno">En diseño</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="diseno" data-level="sub-flujo" data-product="debito" data-has-date="false">
-            <td class="td-id">2.2.1</td>
-            <td class="td-name" style="padding-left:44px;">↳ Datos de TD</td>
-            <td class="td-level level-sub">Sub-flujo</td>
-            <td><span class="tree-status status-diseno">En diseño</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="por-disenar" data-level="sub-flujo" data-product="debito" data-has-date="false">
-            <td class="td-id">2.2.2</td>
-            <td class="td-name" style="padding-left:44px;">↳ Cambio de PIN</td>
-            <td class="td-level level-sub">Sub-flujo</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="por-disenar" data-level="sub-flujo" data-product="debito" data-has-date="false">
-            <td class="td-id">2.2.3</td>
-            <td class="td-name" style="padding-left:44px;">↳ Bloqueo temporal</td>
-            <td class="td-level level-sub">Sub-flujo</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="por-disenar" data-level="sub-flujo" data-product="debito" data-has-date="false">
-            <td class="td-id">2.2.4</td>
-            <td class="td-name" style="padding-left:44px;">↳ Bloqueo por robo</td>
-            <td class="td-level level-sub">Sub-flujo</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="diseno" data-level="sub-flujo" data-product="debito" data-has-date="false">
-            <td class="td-id">2.2.5</td>
-            <td class="td-name" style="padding-left:44px;">↳ Permisos</td>
-            <td class="td-level level-sub">Sub-flujo</td>
-            <td><span class="tree-status status-diseno">En diseño</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="por-disenar" data-level="principal" data-product="debito" data-has-date="false">
-            <td class="td-id">3</td>
-            <td class="td-name">Enviar movimientos</td>
-            <td class="td-level level-principal">Principal</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="por-disenar" data-level="principal" data-product="debito" data-has-date="false">
-            <td class="td-id">4</td>
-            <td class="td-name">Cerrar cuenta</td>
-            <td class="td-level level-principal">Principal</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
+          <tr data-status="diseno" data-level="principal" data-product="debito" data-has-date="false"><td class="td-id">1</td><td class="td-name">Consultar saldos y movimientos</td><td class="td-level level-principal">Principal</td><td><span class="tree-status status-diseno">En diseño</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="diseno" data-level="principal" data-product="debito" data-has-date="false"><td class="td-id">2</td><td class="td-name">Detalle de tarjetas</td><td class="td-level level-principal">Principal</td><td><span class="tree-status status-diseno">En diseño</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="diseno" data-level="sub-funcion" data-product="debito" data-has-date="false"><td class="td-id">2.1</td><td class="td-name" style="padding-left:28px;">↳ Virtual</td><td class="td-level level-sub">Sub-función</td><td><span class="tree-status status-diseno">En diseño</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="diseno" data-level="sub-flujo" data-product="debito" data-has-date="false"><td class="td-id">2.1.1</td><td class="td-name" style="padding-left:44px;">↳ Datos de TD</td><td class="td-level level-sub">Sub-flujo</td><td><span class="tree-status status-diseno">En diseño</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="diseno" data-level="sub-flujo" data-product="debito" data-has-date="false"><td class="td-id">2.1.2</td><td class="td-name" style="padding-left:44px;">↳ Bloqueo temporal</td><td class="td-level level-sub">Sub-flujo</td><td><span class="tree-status status-diseno">En diseño</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="por-disenar" data-level="sub-flujo" data-product="debito" data-has-date="false"><td class="td-id">2.1.3</td><td class="td-name" style="padding-left:44px;">↳ Eliminar tarjeta</td><td class="td-level level-sub">Sub-flujo</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="diseno" data-level="sub-flujo" data-product="debito" data-has-date="false"><td class="td-id">2.1.4</td><td class="td-name" style="padding-left:44px;">↳ Permisos</td><td class="td-level level-sub">Sub-flujo</td><td><span class="tree-status status-diseno">En diseño</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="diseno" data-level="sub-funcion" data-product="debito" data-has-date="false"><td class="td-id">2.2</td><td class="td-name" style="padding-left:28px;">↳ Física</td><td class="td-level level-sub">Sub-función</td><td><span class="tree-status status-diseno">En diseño</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="diseno" data-level="sub-flujo" data-product="debito" data-has-date="false"><td class="td-id">2.2.1</td><td class="td-name" style="padding-left:44px;">↳ Datos de TD</td><td class="td-level level-sub">Sub-flujo</td><td><span class="tree-status status-diseno">En diseño</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="por-disenar" data-level="sub-flujo" data-product="debito" data-has-date="false"><td class="td-id">2.2.2</td><td class="td-name" style="padding-left:44px;">↳ Cambio de PIN</td><td class="td-level level-sub">Sub-flujo</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="por-disenar" data-level="sub-flujo" data-product="debito" data-has-date="false"><td class="td-id">2.2.3</td><td class="td-name" style="padding-left:44px;">↳ Bloqueo temporal</td><td class="td-level level-sub">Sub-flujo</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="por-disenar" data-level="sub-flujo" data-product="debito" data-has-date="false"><td class="td-id">2.2.4</td><td class="td-name" style="padding-left:44px;">↳ Bloqueo por robo</td><td class="td-level level-sub">Sub-flujo</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="diseno" data-level="sub-flujo" data-product="debito" data-has-date="false"><td class="td-id">2.2.5</td><td class="td-name" style="padding-left:44px;">↳ Permisos</td><td class="td-level level-sub">Sub-flujo</td><td><span class="tree-status status-diseno">En diseño</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="por-disenar" data-level="principal" data-product="debito" data-has-date="false"><td class="td-id">3</td><td class="td-name">Enviar movimientos</td><td class="td-level level-principal">Principal</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="por-disenar" data-level="principal" data-product="debito" data-has-date="false"><td class="td-id">4</td><td class="td-name">Cerrar cuenta</td><td class="td-level level-principal">Principal</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
         </tbody>
       </table>
     </div>
   </div>
 
   <!-- ═══════════════════════════════════════ -->
-  <!-- AHORRA MÁS / DEPÓSITO GARANTÍA           -->
+  <!-- 4. AHORRA MÁS SOLES                    -->
   <!-- ═══════════════════════════════════════ -->
-  <div class="product-card" data-product="ahorra">
+  <div class="product-card" data-product="ahorra-soles">
     <div class="product-header">
       <div class="product-title">
-        <span class="product-name"> Ahorra Más &amp; Depósito Garantía</span>
+        <span class="product-name"> Ahorra Más Soles</span>
         <span class="product-badge badge-p4">Prioridad 4</span>
       </div>
       <div class="product-stats">
-        <span class="stat"><strong>3</strong> productos</span>
         <span class="stat"><strong>4</strong> funcionalidades</span>
       </div>
     </div>
@@ -618,34 +424,10 @@
               <span class="tree-label level-principal">Funcionalidades</span>
             </div>
             <ul>
-              <li>
-                <div class="tree-node color-blue">
-                  <span class="tree-toggle leaf">▶</span>
-                  <span class="tree-label">Consultar saldos y movimientos</span>
-                  <span class="tree-status status-por-disenar">Por diseñar</span>
-                </div>
-              </li>
-              <li>
-                <div class="tree-node color-blue">
-                  <span class="tree-toggle leaf">▶</span>
-                  <span class="tree-label">Detalle de cuenta</span>
-                  <span class="tree-status status-por-disenar">Por diseñar</span>
-                </div>
-              </li>
-              <li>
-                <div class="tree-node color-violet">
-                  <span class="tree-toggle leaf">▶</span>
-                  <span class="tree-label">Enviar movimientos / EECC*</span>
-                  <span class="tree-status status-por-disenar">Por diseñar</span>
-                </div>
-              </li>
-              <li>
-                <div class="tree-node color-violet">
-                  <span class="tree-toggle leaf">▶</span>
-                  <span class="tree-label">Retiro / Cierre de cuenta</span>
-                  <span class="tree-status status-por-disenar">Por diseñar</span>
-                </div>
-              </li>
+              <li><div class="tree-node color-blue"><span class="tree-toggle leaf">▶</span><span class="tree-label">Consultar saldos y movimientos</span><span class="tree-status status-por-disenar">Por diseñar</span></div></li>
+              <li><div class="tree-node color-blue"><span class="tree-toggle leaf">▶</span><span class="tree-label">Detalle de cuenta</span><span class="tree-status status-por-disenar">Por diseñar</span></div></li>
+              <li><div class="tree-node color-violet"><span class="tree-toggle leaf">▶</span><span class="tree-label">Enviar movimientos / EECC*</span><span class="tree-status status-por-disenar">Por diseñar</span></div></li>
+              <li><div class="tree-node color-violet"><span class="tree-toggle leaf">▶</span><span class="tree-label">Retiro / Cierre de cuenta</span><span class="tree-status status-por-disenar">Por diseñar</span></div></li>
             </ul>
           </li>
         </ul>
@@ -653,152 +435,29 @@
     </div>
 
     <div class="table-section">
-      <h3>Productos · Ahorra Más Soles</h3>
+      <h3>Registro de entregables</h3>
       <table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Función</th>
-            <th>Nivel</th>
-            <th>Estado</th>
-            <th>Fecha entrega</th>
-          </tr>
-        </thead>
+        <thead><tr><th>#</th><th>Función</th><th>Nivel</th><th>Estado</th><th>Fecha entrega</th></tr></thead>
         <tbody>
-          <tr data-status="por-disenar" data-level="principal" data-product="ahorra" data-has-date="false">
-            <td class="td-id">1</td>
-            <td class="td-name">Consultar saldos y movimientos</td>
-            <td class="td-level level-principal">Principal</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="por-disenar" data-level="principal" data-product="ahorra" data-has-date="false">
-            <td class="td-id">2</td>
-            <td class="td-name">Detalle de cuenta</td>
-            <td class="td-level level-principal">Principal</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="por-disenar" data-level="principal" data-product="ahorra" data-has-date="false">
-            <td class="td-id">3</td>
-            <td class="td-name">Enviar movimientos / EECC*</td>
-            <td class="td-level level-principal">Principal</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="por-disenar" data-level="principal" data-product="ahorra" data-has-date="false">
-            <td class="td-id">4</td>
-            <td class="td-name">Retiro / Cierre de cuenta</td>
-            <td class="td-level level-principal">Principal</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="table-section">
-      <h3>Productos · Ahorra Más Dólares</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Función</th>
-            <th>Nivel</th>
-            <th>Estado</th>
-            <th>Fecha entrega</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr data-status="por-disenar" data-level="principal" data-product="ahorra" data-has-date="false">
-            <td class="td-id">1</td>
-            <td class="td-name">Consultar saldos y movimientos</td>
-            <td class="td-level level-principal">Principal</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="por-disenar" data-level="principal" data-product="ahorra" data-has-date="false">
-            <td class="td-id">2</td>
-            <td class="td-name">Detalle de cuenta</td>
-            <td class="td-level level-principal">Principal</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="por-disenar" data-level="principal" data-product="ahorra" data-has-date="false">
-            <td class="td-id">3</td>
-            <td class="td-name">Enviar movimientos / EECC*</td>
-            <td class="td-level level-principal">Principal</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="por-disenar" data-level="principal" data-product="ahorra" data-has-date="false">
-            <td class="td-id">4</td>
-            <td class="td-name">Retiro / Cierre de cuenta</td>
-            <td class="td-level level-principal">Principal</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="table-section">
-      <h3>Productos · Depósito Garantía</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Función</th>
-            <th>Nivel</th>
-            <th>Estado</th>
-            <th>Fecha entrega</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr data-status="por-disenar" data-level="principal" data-product="ahorra" data-has-date="false">
-            <td class="td-id">1</td>
-            <td class="td-name">Consultar saldos y movimientos</td>
-            <td class="td-level level-principal">Principal</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="por-disenar" data-level="principal" data-product="ahorra" data-has-date="false">
-            <td class="td-id">2</td>
-            <td class="td-name">Detalle de cuenta</td>
-            <td class="td-level level-principal">Principal</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="por-disenar" data-level="principal" data-product="ahorra" data-has-date="false">
-            <td class="td-id">3</td>
-            <td class="td-name">Enviar movimientos / EECC*</td>
-            <td class="td-level level-principal">Principal</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="por-disenar" data-level="principal" data-product="ahorra" data-has-date="false">
-            <td class="td-id">4</td>
-            <td class="td-name">Retiro / Cierre de cuenta</td>
-            <td class="td-level level-principal">Principal</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
+          <tr data-status="por-disenar" data-level="principal" data-product="ahorra-soles" data-has-date="false"><td class="td-id">1</td><td class="td-name">Consultar saldos y movimientos</td><td class="td-level level-principal">Principal</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="por-disenar" data-level="principal" data-product="ahorra-soles" data-has-date="false"><td class="td-id">2</td><td class="td-name">Detalle de cuenta</td><td class="td-level level-principal">Principal</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="por-disenar" data-level="principal" data-product="ahorra-soles" data-has-date="false"><td class="td-id">3</td><td class="td-name">Enviar movimientos / EECC*</td><td class="td-level level-principal">Principal</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="por-disenar" data-level="principal" data-product="ahorra-soles" data-has-date="false"><td class="td-id">4</td><td class="td-name">Retiro / Cierre de cuenta</td><td class="td-level level-principal">Principal</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
         </tbody>
       </table>
     </div>
   </div>
 
   <!-- ═══════════════════════════════════════ -->
-  <!-- DPF / CTS                                -->
+  <!-- 5. AHORRA MÁS DÓLARES                  -->
   <!-- ═══════════════════════════════════════ -->
-  <div class="product-card" data-product="dpf-cts">
+  <div class="product-card" data-product="ahorra-dolares">
     <div class="product-header">
       <div class="product-title">
-        <span class="product-name">🏦 DPF &amp; CTS</span>
+        <span class="product-name"> Ahorra Más Dólares</span>
         <span class="product-badge badge-p5">Prioridad 5</span>
       </div>
       <div class="product-stats">
-        <span class="stat"><strong>3</strong> productos</span>
         <span class="stat"><strong>4</strong> funcionalidades</span>
       </div>
     </div>
@@ -813,34 +472,10 @@
               <span class="tree-label level-principal">Funcionalidades</span>
             </div>
             <ul>
-              <li>
-                <div class="tree-node color-blue">
-                  <span class="tree-toggle leaf">▶</span>
-                  <span class="tree-label">Consultar saldos y movimientos</span>
-                  <span class="tree-status status-por-disenar">Por diseñar</span>
-                </div>
-              </li>
-              <li>
-                <div class="tree-node color-blue">
-                  <span class="tree-toggle leaf">▶</span>
-                  <span class="tree-label">Detalle de cuenta</span>
-                  <span class="tree-status status-por-disenar">Por diseñar</span>
-                </div>
-              </li>
-              <li>
-                <div class="tree-node color-violet">
-                  <span class="tree-toggle leaf">▶</span>
-                  <span class="tree-label">Enviar movimientos / EECC*</span>
-                  <span class="tree-status status-por-disenar">Por diseñar</span>
-                </div>
-              </li>
-              <li>
-                <div class="tree-node color-violet">
-                  <span class="tree-toggle leaf">▶</span>
-                  <span class="tree-label">Retiro / Cierre de cuenta</span>
-                  <span class="tree-status status-por-disenar">Por diseñar</span>
-                </div>
-              </li>
+              <li><div class="tree-node color-blue"><span class="tree-toggle leaf">▶</span><span class="tree-label">Consultar saldos y movimientos</span><span class="tree-status status-por-disenar">Por diseñar</span></div></li>
+              <li><div class="tree-node color-blue"><span class="tree-toggle leaf">▶</span><span class="tree-label">Detalle de cuenta</span><span class="tree-status status-por-disenar">Por diseñar</span></div></li>
+              <li><div class="tree-node color-violet"><span class="tree-toggle leaf">▶</span><span class="tree-label">Enviar movimientos / EECC*</span><span class="tree-status status-por-disenar">Por diseñar</span></div></li>
+              <li><div class="tree-node color-violet"><span class="tree-toggle leaf">▶</span><span class="tree-label">Retiro / Cierre de cuenta</span><span class="tree-status status-por-disenar">Por diseñar</span></div></li>
             </ul>
           </li>
         </ul>
@@ -848,152 +483,173 @@
     </div>
 
     <div class="table-section">
-      <h3>Productos · DPF Soles</h3>
+      <h3>Registro de entregables</h3>
       <table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Función</th>
-            <th>Nivel</th>
-            <th>Estado</th>
-            <th>Fecha entrega</th>
-          </tr>
-        </thead>
+        <thead><tr><th>#</th><th>Función</th><th>Nivel</th><th>Estado</th><th>Fecha entrega</th></tr></thead>
         <tbody>
-          <tr data-status="por-disenar" data-level="principal" data-product="dpf-cts" data-has-date="false">
-            <td class="td-id">1</td>
-            <td class="td-name">Consultar saldos y movimientos</td>
-            <td class="td-level level-principal">Principal</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="por-disenar" data-level="principal" data-product="dpf-cts" data-has-date="false">
-            <td class="td-id">2</td>
-            <td class="td-name">Detalle de cuenta</td>
-            <td class="td-level level-principal">Principal</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="por-disenar" data-level="principal" data-product="dpf-cts" data-has-date="false">
-            <td class="td-id">3</td>
-            <td class="td-name">Enviar movimientos / EECC*</td>
-            <td class="td-level level-principal">Principal</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="por-disenar" data-level="principal" data-product="dpf-cts" data-has-date="false">
-            <td class="td-id">4</td>
-            <td class="td-name">Retiro / Cierre de cuenta</td>
-            <td class="td-level level-principal">Principal</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="table-section">
-      <h3>Productos · DPF Dólares</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Función</th>
-            <th>Nivel</th>
-            <th>Estado</th>
-            <th>Fecha entrega</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr data-status="por-disenar" data-level="principal" data-product="dpf-cts" data-has-date="false">
-            <td class="td-id">1</td>
-            <td class="td-name">Consultar saldos y movimientos</td>
-            <td class="td-level level-principal">Principal</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="por-disenar" data-level="principal" data-product="dpf-cts" data-has-date="false">
-            <td class="td-id">2</td>
-            <td class="td-name">Detalle de cuenta</td>
-            <td class="td-level level-principal">Principal</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="por-disenar" data-level="principal" data-product="dpf-cts" data-has-date="false">
-            <td class="td-id">3</td>
-            <td class="td-name">Enviar movimientos / EECC*</td>
-            <td class="td-level level-principal">Principal</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="por-disenar" data-level="principal" data-product="dpf-cts" data-has-date="false">
-            <td class="td-id">4</td>
-            <td class="td-name">Retiro / Cierre de cuenta</td>
-            <td class="td-level level-principal">Principal</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="table-section">
-      <h3>Productos · CTS Soles</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Función</th>
-            <th>Nivel</th>
-            <th>Estado</th>
-            <th>Fecha entrega</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr data-status="por-disenar" data-level="principal" data-product="dpf-cts" data-has-date="false">
-            <td class="td-id">1</td>
-            <td class="td-name">Consultar saldos y movimientos</td>
-            <td class="td-level level-principal">Principal</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="por-disenar" data-level="principal" data-product="dpf-cts" data-has-date="false">
-            <td class="td-id">2</td>
-            <td class="td-name">Detalle de cuenta</td>
-            <td class="td-level level-principal">Principal</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="por-disenar" data-level="principal" data-product="dpf-cts" data-has-date="false">
-            <td class="td-id">3</td>
-            <td class="td-name">Enviar movimientos / EECC*</td>
-            <td class="td-level level-principal">Principal</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="por-disenar" data-level="principal" data-product="dpf-cts" data-has-date="false">
-            <td class="td-id">4</td>
-            <td class="td-name">Retiro / Cierre de cuenta</td>
-            <td class="td-level level-principal">Principal</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
+          <tr data-status="por-disenar" data-level="principal" data-product="ahorra-dolares" data-has-date="false"><td class="td-id">1</td><td class="td-name">Consultar saldos y movimientos</td><td class="td-level level-principal">Principal</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="por-disenar" data-level="principal" data-product="ahorra-dolares" data-has-date="false"><td class="td-id">2</td><td class="td-name">Detalle de cuenta</td><td class="td-level level-principal">Principal</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="por-disenar" data-level="principal" data-product="ahorra-dolares" data-has-date="false"><td class="td-id">3</td><td class="td-name">Enviar movimientos / EECC*</td><td class="td-level level-principal">Principal</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="por-disenar" data-level="principal" data-product="ahorra-dolares" data-has-date="false"><td class="td-id">4</td><td class="td-name">Retiro / Cierre de cuenta</td><td class="td-level level-principal">Principal</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
         </tbody>
       </table>
     </div>
   </div>
 
   <!-- ═══════════════════════════════════════ -->
-  <!-- PLD                                      -->
+  <!-- 6. DEPÓSITO GARANTÍA                   -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="product-card" data-product="deposito">
+    <div class="product-header">
+      <div class="product-title">
+        <span class="product-name">🏦 Depósito Garantía</span>
+        <span class="product-badge badge-p6">Prioridad 6</span>
+      </div>
+      <div class="product-stats">
+        <span class="stat"><strong>4</strong> funcionalidades</span>
+      </div>
+    </div>
+
+    <div class="tree-section">
+      <h3>Árbol de funciones</h3>
+      <div class="tree">
+        <ul>
+          <li>
+            <div class="tree-node">
+              <span class="tree-toggle open">▶</span>
+              <span class="tree-label level-principal">Funcionalidades</span>
+            </div>
+            <ul>
+              <li><div class="tree-node color-blue"><span class="tree-toggle leaf">▶</span><span class="tree-label">Consultar saldos y movimientos</span><span class="tree-status status-por-disenar">Por diseñar</span></div></li>
+              <li><div class="tree-node color-blue"><span class="tree-toggle leaf">▶</span><span class="tree-label">Detalle de cuenta</span><span class="tree-status status-por-disenar">Por diseñar</span></div></li>
+              <li><div class="tree-node color-violet"><span class="tree-toggle leaf">▶</span><span class="tree-label">Enviar movimientos / EECC*</span><span class="tree-status status-por-disenar">Por diseñar</span></div></li>
+              <li><div class="tree-node color-violet"><span class="tree-toggle leaf">▶</span><span class="tree-label">Retiro / Cierre de cuenta</span><span class="tree-status status-por-disenar">Por diseñar</span></div></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="table-section">
+      <h3>Registro de entregables</h3>
+      <table>
+        <thead><tr><th>#</th><th>Función</th><th>Nivel</th><th>Estado</th><th>Fecha entrega</th></tr></thead>
+        <tbody>
+          <tr data-status="por-disenar" data-level="principal" data-product="deposito" data-has-date="false"><td class="td-id">1</td><td class="td-name">Consultar saldos y movimientos</td><td class="td-level level-principal">Principal</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="por-disenar" data-level="principal" data-product="deposito" data-has-date="false"><td class="td-id">2</td><td class="td-name">Detalle de cuenta</td><td class="td-level level-principal">Principal</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="por-disenar" data-level="principal" data-product="deposito" data-has-date="false"><td class="td-id">3</td><td class="td-name">Enviar movimientos / EECC*</td><td class="td-level level-principal">Principal</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="por-disenar" data-level="principal" data-product="deposito" data-has-date="false"><td class="td-id">4</td><td class="td-name">Retiro / Cierre de cuenta</td><td class="td-level level-principal">Principal</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- 7. DPF                                 -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="product-card" data-product="dpf">
+    <div class="product-header">
+      <div class="product-title">
+        <span class="product-name"> DPF</span>
+        <span class="product-badge badge-p7">Prioridad 7</span>
+      </div>
+      <div class="product-stats">
+        <span class="stat"><strong>4</strong> funcionalidades</span>
+      </div>
+    </div>
+
+    <div class="tree-section">
+      <h3>Árbol de funciones</h3>
+      <div class="tree">
+        <ul>
+          <li>
+            <div class="tree-node">
+              <span class="tree-toggle open">▶</span>
+              <span class="tree-label level-principal">Funcionalidades</span>
+            </div>
+            <ul>
+              <li><div class="tree-node color-blue"><span class="tree-toggle leaf">▶</span><span class="tree-label">Consultar saldos y movimientos</span><span class="tree-status status-por-disenar">Por diseñar</span></div></li>
+              <li><div class="tree-node color-blue"><span class="tree-toggle leaf">▶</span><span class="tree-label">Detalle de cuenta</span><span class="tree-status status-por-disenar">Por diseñar</span></div></li>
+              <li><div class="tree-node color-violet"><span class="tree-toggle leaf">▶</span><span class="tree-label">Enviar movimientos / EECC*</span><span class="tree-status status-por-disenar">Por diseñar</span></div></li>
+              <li><div class="tree-node color-violet"><span class="tree-toggle leaf">▶</span><span class="tree-label">Retiro / Cierre de cuenta</span><span class="tree-status status-por-disenar">Por diseñar</span></div></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="table-section">
+      <h3>Registro de entregables</h3>
+      <table>
+        <thead><tr><th>#</th><th>Función</th><th>Nivel</th><th>Estado</th><th>Fecha entrega</th></tr></thead>
+        <tbody>
+          <tr data-status="por-disenar" data-level="principal" data-product="dpf" data-has-date="false"><td class="td-id">1</td><td class="td-name">Consultar saldos y movimientos</td><td class="td-level level-principal">Principal</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="por-disenar" data-level="principal" data-product="dpf" data-has-date="false"><td class="td-id">2</td><td class="td-name">Detalle de cuenta</td><td class="td-level level-principal">Principal</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="por-disenar" data-level="principal" data-product="dpf" data-has-date="false"><td class="td-id">3</td><td class="td-name">Enviar movimientos / EECC*</td><td class="td-level level-principal">Principal</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="por-disenar" data-level="principal" data-product="dpf" data-has-date="false"><td class="td-id">4</td><td class="td-name">Retiro / Cierre de cuenta</td><td class="td-level level-principal">Principal</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- 8. CTS                                 -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="product-card" data-product="cts">
+    <div class="product-header">
+      <div class="product-title">
+        <span class="product-name">🏦 CTS</span>
+        <span class="product-badge badge-p8">Prioridad 8</span>
+      </div>
+      <div class="product-stats">
+        <span class="stat"><strong>4</strong> funcionalidades</span>
+      </div>
+    </div>
+
+    <div class="tree-section">
+      <h3>Árbol de funciones</h3>
+      <div class="tree">
+        <ul>
+          <li>
+            <div class="tree-node">
+              <span class="tree-toggle open">▶</span>
+              <span class="tree-label level-principal">Funcionalidades</span>
+            </div>
+            <ul>
+              <li><div class="tree-node color-blue"><span class="tree-toggle leaf">▶</span><span class="tree-label">Consultar saldos y movimientos</span><span class="tree-status status-por-disenar">Por diseñar</span></div></li>
+              <li><div class="tree-node color-blue"><span class="tree-toggle leaf">▶</span><span class="tree-label">Detalle de cuenta</span><span class="tree-status status-por-disenar">Por diseñar</span></div></li>
+              <li><div class="tree-node color-violet"><span class="tree-toggle leaf">▶</span><span class="tree-label">Enviar movimientos / EECC*</span><span class="tree-status status-por-disenar">Por diseñar</span></div></li>
+              <li><div class="tree-node color-violet"><span class="tree-toggle leaf">▶</span><span class="tree-label">Retiro / Cierre de cuenta</span><span class="tree-status status-por-disenar">Por diseñar</span></div></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="table-section">
+      <h3>Registro de entregables</h3>
+      <table>
+        <thead><tr><th>#</th><th>Función</th><th>Nivel</th><th>Estado</th><th>Fecha entrega</th></tr></thead>
+        <tbody>
+          <tr data-status="por-disenar" data-level="principal" data-product="cts" data-has-date="false"><td class="td-id">1</td><td class="td-name">Consultar saldos y movimientos</td><td class="td-level level-principal">Principal</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="por-disenar" data-level="principal" data-product="cts" data-has-date="false"><td class="td-id">2</td><td class="td-name">Detalle de cuenta</td><td class="td-level level-principal">Principal</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="por-disenar" data-level="principal" data-product="cts" data-has-date="false"><td class="td-id">3</td><td class="td-name">Enviar movimientos / EECC*</td><td class="td-level level-principal">Principal</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="por-disenar" data-level="principal" data-product="cts" data-has-date="false"><td class="td-id">4</td><td class="td-name">Retiro / Cierre de cuenta</td><td class="td-level level-principal">Principal</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- 9. PLD                                 -->
   <!-- ═══════════════════════════════════════ -->
   <div class="product-card" data-product="pld">
     <div class="product-header">
       <div class="product-title">
         <span class="product-name"> PLD</span>
-        <span class="product-badge badge-p6">Prioridad 6</span>
+        <span class="product-badge badge-p9">Prioridad 9</span>
       </div>
       <div class="product-stats">
-        <span class="stat"><strong>1</strong> producto</span>
         <span class="stat"><strong>3</strong> funcionalidades</span>
       </div>
     </div>
@@ -1008,27 +664,9 @@
               <span class="tree-label level-principal">Funcionalidades</span>
             </div>
             <ul>
-              <li>
-                <div class="tree-node color-blue">
-                  <span class="tree-toggle leaf">▶</span>
-                  <span class="tree-label">Consultar saldos y movimientos</span>
-                  <span class="tree-status status-por-disenar">Por diseñar</span>
-                </div>
-              </li>
-              <li>
-                <div class="tree-node color-blue">
-                  <span class="tree-toggle leaf">▶</span>
-                  <span class="tree-label">Ver cronograma</span>
-                  <span class="tree-status status-por-disenar">Por diseñar</span>
-                </div>
-              </li>
-              <li>
-                <div class="tree-node color-violet">
-                  <span class="tree-toggle leaf">▶</span>
-                  <span class="tree-label">Pagar cuota</span>
-                  <span class="tree-status status-por-disenar">Por diseñar</span>
-                </div>
-              </li>
+              <li><div class="tree-node color-blue"><span class="tree-toggle leaf">▶</span><span class="tree-label">Consultar saldos y movimientos</span><span class="tree-status status-por-disenar">Por diseñar</span></div></li>
+              <li><div class="tree-node color-blue"><span class="tree-toggle leaf">▶</span><span class="tree-label">Ver cronograma</span><span class="tree-status status-por-disenar">Por diseñar</span></div></li>
+              <li><div class="tree-node color-violet"><span class="tree-toggle leaf">▶</span><span class="tree-label">Pagar cuota</span><span class="tree-status status-por-disenar">Por diseñar</span></div></li>
             </ul>
           </li>
         </ul>
@@ -1036,52 +674,26 @@
     </div>
 
     <div class="table-section">
-      <h3>Productos · PLD</h3>
+      <h3>Registro de entregables</h3>
       <table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Función</th>
-            <th>Nivel</th>
-            <th>Estado</th>
-            <th>Fecha entrega</th>
-          </tr>
-        </thead>
+        <thead><tr><th>#</th><th>Función</th><th>Nivel</th><th>Estado</th><th>Fecha entrega</th></tr></thead>
         <tbody>
-          <tr data-status="por-disenar" data-level="principal" data-product="pld" data-has-date="false">
-            <td class="td-id">1</td>
-            <td class="td-name">Consultar saldos y movimientos</td>
-            <td class="td-level level-principal">Principal</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="por-disenar" data-level="principal" data-product="pld" data-has-date="false">
-            <td class="td-id">2</td>
-            <td class="td-name">Ver cronograma</td>
-            <td class="td-level level-principal">Principal</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="por-disenar" data-level="principal" data-product="pld" data-has-date="false">
-            <td class="td-id">3</td>
-            <td class="td-name">Pagar cuota</td>
-            <td class="td-level level-principal">Principal</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
+          <tr data-status="por-disenar" data-level="principal" data-product="pld" data-has-date="false"><td class="td-id">1</td><td class="td-name">Consultar saldos y movimientos</td><td class="td-level level-principal">Principal</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="por-disenar" data-level="principal" data-product="pld" data-has-date="false"><td class="td-id">2</td><td class="td-name">Ver cronograma</td><td class="td-level level-principal">Principal</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="por-disenar" data-level="principal" data-product="pld" data-has-date="false"><td class="td-id">3</td><td class="td-name">Pagar cuota</td><td class="td-level level-principal">Principal</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
         </tbody>
       </table>
     </div>
   </div>
 
   <!-- ═══════════════════════════════════════ -->
-  <!-- SEGUROS                                -->
+  <!-- 10. SEGUROS                            -->
   <!-- ═══════════════════════════════════════ -->
   <div class="product-card" data-product="seguros">
     <div class="product-header">
       <div class="product-title">
-        <span class="product-name">️ Seguros</span>
-        <span class="product-badge badge-p7">Prioridad 7</span>
+        <span class="product-name">🛡️ Seguros</span>
+        <span class="product-badge badge-p10">Prioridad 10</span>
       </div>
       <div class="product-stats">
         <span class="stat"><strong>1</strong> sub-función</span>
@@ -1106,20 +718,8 @@
                   <span class="tree-status status-por-disenar">Por diseñar</span>
                 </div>
                 <ul>
-                  <li>
-                    <div class="tree-node color-violet">
-                      <span class="tree-toggle leaf">▶</span>
-                      <span class="tree-label">Protección financiera</span>
-                      <span class="tree-status status-por-disenar">Por diseñar</span>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="tree-node color-violet">
-                      <span class="tree-toggle leaf">▶</span>
-                      <span class="tree-label">Vida Maxicash</span>
-                      <span class="tree-status status-por-disenar">Por diseñar</span>
-                    </div>
-                  </li>
+                  <li><div class="tree-node color-violet"><span class="tree-toggle leaf">▶</span><span class="tree-label">Protección financiera</span><span class="tree-status status-por-disenar">Por diseñar</span></div></li>
+                  <li><div class="tree-node color-violet"><span class="tree-toggle leaf">▶</span><span class="tree-label">Vida Maxicash</span><span class="tree-status status-por-disenar">Por diseñar</span></div></li>
                 </ul>
               </li>
             </ul>
@@ -1131,50 +731,24 @@
     <div class="table-section">
       <h3>Registro de entregables</h3>
       <table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Función</th>
-            <th>Nivel</th>
-            <th>Estado</th>
-            <th>Fecha entrega</th>
-          </tr>
-        </thead>
+        <thead><tr><th>#</th><th>Función</th><th>Nivel</th><th>Estado</th><th>Fecha entrega</th></tr></thead>
         <tbody>
-          <tr data-status="por-disenar" data-level="sub-funcion" data-product="seguros" data-has-date="false">
-            <td class="td-id">1</td>
-            <td class="td-name">Seguros dependientes (embebidos)</td>
-            <td class="td-level level-sub">Sub-función</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="por-disenar" data-level="sub-flujo" data-product="seguros" data-has-date="false">
-            <td class="td-id">1.1</td>
-            <td class="td-name" style="padding-left:28px;">↳ Protección financiera</td>
-            <td class="td-level level-sub">Sub-flujo</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="por-disenar" data-level="sub-flujo" data-product="seguros" data-has-date="false">
-            <td class="td-id">1.2</td>
-            <td class="td-name" style="padding-left:28px;">↳ Vida Maxicash</td>
-            <td class="td-level level-sub">Sub-flujo</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
+          <tr data-status="por-disenar" data-level="sub-funcion" data-product="seguros" data-has-date="false"><td class="td-id">1</td><td class="td-name">Seguros dependientes (embebidos)</td><td class="td-level level-sub">Sub-función</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="por-disenar" data-level="sub-flujo" data-product="seguros" data-has-date="false"><td class="td-id">1.1</td><td class="td-name" style="padding-left:28px;">↳ Protección financiera</td><td class="td-level level-sub">Sub-flujo</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="por-disenar" data-level="sub-flujo" data-product="seguros" data-has-date="false"><td class="td-id">1.2</td><td class="td-name" style="padding-left:28px;">↳ Vida Maxicash</td><td class="td-level level-sub">Sub-flujo</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
         </tbody>
       </table>
     </div>
   </div>
 
   <!-- ═══════════════════════════════════════ -->
-  <!-- MIS BENEFICIOS                         -->
+  <!-- 11. MIS BENEFICIOS                     -->
   <!-- ═══════════════════════════════════════ -->
   <div class="product-card" data-product="beneficios">
     <div class="product-header">
       <div class="product-title">
-        <span class="product-name"> Mis beneficios</span>
-        <span class="product-badge badge-p8">Prioridad 8</span>
+        <span class="product-name"> Mis Beneficios</span>
+        <span class="product-badge badge-p11">Prioridad 11</span>
       </div>
       <div class="product-stats">
         <span class="stat"><strong>2</strong> categorías</span>
@@ -1192,13 +766,7 @@
               <span class="tree-label level-principal">Funcionalidades</span>
             </div>
             <ul>
-              <li>
-                <div class="tree-node color-blue">
-                  <span class="tree-toggle leaf">▶</span>
-                  <span class="tree-label">Promociones</span>
-                  <span class="tree-status status-por-disenar">Por diseñar</span>
-                </div>
-              </li>
+              <li><div class="tree-node color-blue"><span class="tree-toggle leaf">▶</span><span class="tree-label">Promociones</span><span class="tree-status status-por-disenar">Por diseñar</span></div></li>
               <li>
                 <div class="tree-node color-blue">
                   <span class="tree-toggle open">▶</span>
@@ -1206,63 +774,20 @@
                   <span class="tree-status status-por-disenar">Por diseñar</span>
                 </div>
                 <ul>
-                  <li>
-                    <div class="tree-node color-violet">
-                      <span class="tree-toggle leaf">▶</span>
-                      <span class="tree-label">Diseñf/Maxicash</span>
-                      <span class="tree-status status-por-disenar">Por diseñar</span>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="tree-node color-violet">
-                      <span class="tree-toggle leaf">▶</span>
-                      <span class="tree-label">Crédito efectivo</span>
-                      <span class="tree-status status-por-disenar">Por diseñar</span>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="tree-node color-violet">
-                      <span class="tree-toggle leaf">▶</span>
-                      <span class="tree-label">Incremento de línea</span>
-                      <span class="tree-status status-por-disenar">Por diseñar</span>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="tree-node color-violet">
-                      <span class="tree-toggle leaf">▶</span>
-                      <span class="tree-label">Aplázalo</span>
-                      <span class="tree-status status-por-disenar">Por diseñar</span>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="tree-node color-violet">
-                      <span class="tree-toggle leaf">▶</span>
-                      <span class="tree-label">DPF</span>
-                      <span class="tree-status status-por-disenar">Por diseñar</span>
-                    </div>
-                  </li>
+                  <li><div class="tree-node color-violet"><span class="tree-toggle leaf">▶</span><span class="tree-label">Diseñf/Maxicash</span><span class="tree-status status-por-disenar">Por diseñar</span></div></li>
+                  <li><div class="tree-node color-violet"><span class="tree-toggle leaf">▶</span><span class="tree-label">Crédito efectivo</span><span class="tree-status status-por-disenar">Por diseñar</span></div></li>
+                  <li><div class="tree-node color-violet"><span class="tree-toggle leaf">▶</span><span class="tree-label">Incremento de línea</span><span class="tree-status status-por-disenar">Por diseñar</span></div></li>
+                  <li><div class="tree-node color-violet"><span class="tree-toggle leaf">▶</span><span class="tree-label">Aplázalo</span><span class="tree-status status-por-disenar">Por diseñar</span></div></li>
+                  <li><div class="tree-node color-violet"><span class="tree-toggle leaf">▶</span><span class="tree-label">DPF</span><span class="tree-status status-por-disenar">Por diseñar</span></div></li>
                   <li>
                     <div class="tree-node color-violet">
                       <span class="tree-toggle open">▶</span>
                       <span class="tree-label">Seguros independientes</span>
                       <span class="tree-toggle open">▶</span>
-                      <span class="tree-status status-por-disenar">Por diseñar</span>
                     </div>
                     <ul>
-                      <li>
-                        <div class="tree-node color-violet">
-                          <span class="tree-toggle leaf">▶</span>
-                          <span class="tree-label">Protección de tarjeta</span>
-                          <span class="tree-status status-por-disenar">Por diseñar</span>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="tree-node color-violet">
-                          <span class="tree-toggle leaf">▶</span>
-                          <span class="tree-label">Vida plus</span>
-                          <span class="tree-status status-por-disenar">Por diseñar</span>
-                        </div>
-                      </li>
+                      <li><div class="tree-node color-violet"><span class="tree-toggle leaf">▶</span><span class="tree-label">Protección de tarjeta</span><span class="tree-status status-por-disenar">Por diseñar</span></div></li>
+                      <li><div class="tree-node color-violet"><span class="tree-toggle leaf">▶</span><span class="tree-label">Vida plus</span><span class="tree-status status-por-disenar">Por diseñar</span></div></li>
                     </ul>
                   </li>
                 </ul>
@@ -1276,99 +801,31 @@
     <div class="table-section">
       <h3>Registro de entregables</h3>
       <table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Función</th>
-            <th>Nivel</th>
-            <th>Estado</th>
-            <th>Fecha entrega</th>
-          </tr>
-        </thead>
+        <thead><tr><th>#</th><th>Función</th><th>Nivel</th><th>Estado</th><th>Fecha entrega</th></tr></thead>
         <tbody>
-          <tr data-status="por-disenar" data-level="principal" data-product="beneficios" data-has-date="false">
-            <td class="td-id">1</td>
-            <td class="td-name">Promociones</td>
-            <td class="td-level level-principal">Principal</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="por-disenar" data-level="principal" data-product="beneficios" data-has-date="false">
-            <td class="td-id">2</td>
-            <td class="td-name">Productos para ti</td>
-            <td class="td-level level-principal">Principal</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="por-disenar" data-level="sub-flujo" data-product="beneficios" data-has-date="false">
-            <td class="td-id">2.1</td>
-            <td class="td-name" style="padding-left:28px;">↳ Diseñf/Maxicash</td>
-            <td class="td-level level-sub">Sub-flujo</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="por-disenar" data-level="sub-flujo" data-product="beneficios" data-has-date="false">
-            <td class="td-id">2.2</td>
-            <td class="td-name" style="padding-left:28px;">↳ Crédito efectivo</td>
-            <td class="td-level level-sub">Sub-flujo</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="por-disenar" data-level="sub-flujo" data-product="beneficios" data-has-date="false">
-            <td class="td-id">2.3</td>
-            <td class="td-name" style="padding-left:28px;">↳ Incremento de línea</td>
-            <td class="td-level level-sub">Sub-flujo</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="por-disenar" data-level="sub-flujo" data-product="beneficios" data-has-date="false">
-            <td class="td-id">2.4</td>
-            <td class="td-name" style="padding-left:28px;">↳ Aplázalo</td>
-            <td class="td-level level-sub">Sub-flujo</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="por-disenar" data-level="sub-flujo" data-product="beneficios" data-has-date="false">
-            <td class="td-id">2.5</td>
-            <td class="td-name" style="padding-left:28px;">↳ DPF</td>
-            <td class="td-level level-sub">Sub-flujo</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="por-disenar" data-level="sub-flujo" data-product="beneficios" data-has-date="false">
-            <td class="td-id">2.6</td>
-            <td class="td-name" style="padding-left:28px;">↳ Seguros independientes</td>
-            <td class="td-level level-sub">Sub-flujo</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="por-disenar" data-level="sub-flujo" data-product="beneficios" data-has-date="false">
-            <td class="td-id">2.6.1</td>
-            <td class="td-name" style="padding-left:44px;">↳ Protección de tarjeta</td>
-            <td class="td-level level-sub">Sub-flujo</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="por-disenar" data-level="sub-flujo" data-product="beneficios" data-has-date="false">
-            <td class="td-id">2.6.2</td>
-            <td class="td-name" style="padding-left:44px;">↳ Vida plus</td>
-            <td class="td-level level-sub">Sub-flujo</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
+          <tr data-status="por-disenar" data-level="principal" data-product="beneficios" data-has-date="false"><td class="td-id">1</td><td class="td-name">Promociones</td><td class="td-level level-principal">Principal</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="por-disenar" data-level="principal" data-product="beneficios" data-has-date="false"><td class="td-id">2</td><td class="td-name">Productos para ti</td><td class="td-level level-principal">Principal</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="por-disenar" data-level="sub-flujo" data-product="beneficios" data-has-date="false"><td class="td-id">2.1</td><td class="td-name" style="padding-left:28px;">↳ Diseñf/Maxicash</td><td class="td-level level-sub">Sub-flujo</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="por-disenar" data-level="sub-flujo" data-product="beneficios" data-has-date="false"><td class="td-id">2.2</td><td class="td-name" style="padding-left:28px;">↳ Crédito efectivo</td><td class="td-level level-sub">Sub-flujo</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="por-disenar" data-level="sub-flujo" data-product="beneficios" data-has-date="false"><td class="td-id">2.3</td><td class="td-name" style="padding-left:28px;">↳ Incremento de línea</td><td class="td-level level-sub">Sub-flujo</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="por-disenar" data-level="sub-flujo" data-product="beneficios" data-has-date="false"><td class="td-id">2.4</td><td class="td-name" style="padding-left:28px;">↳ Aplázalo</td><td class="td-level level-sub">Sub-flujo</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="por-disenar" data-level="sub-flujo" data-product="beneficios" data-has-date="false"><td class="td-id">2.5</td><td class="td-name" style="padding-left:28px;">↳ DPF</td><td class="td-level level-sub">Sub-flujo</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="por-disenar" data-level="sub-flujo" data-product="beneficios" data-has-date="false"><td class="td-id">2.6</td><td class="td-name" style="padding-left:28px;">↳ Seguros independientes</td><td class="td-level level-sub">Sub-flujo</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="por-disenar" data-level="sub-flujo" data-product="beneficios" data-has-date="false"><td class="td-id">2.6.1</td><td class="td-name" style="padding-left:44px;">↳ Protección de tarjeta</td><td class="td-level level-sub">Sub-flujo</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="por-disenar" data-level="sub-flujo" data-product="beneficios" data-has-date="false"><td class="td-id">2.6.2</td><td class="td-name" style="padding-left:44px;">↳ Vida plus</td><td class="td-level level-sub">Sub-flujo</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
         </tbody>
       </table>
     </div>
   </div>
 
   <!-- ═══════════════════════════════════════ -->
-  <!-- LOGIN                                  -->
+  <!-- 12. LOGIN                              -->
   <!-- ═══════════════════════════════════════ -->
   <div class="product-card" data-product="login">
     <div class="product-header">
       <div class="product-title">
-        <span class="product-name"> 🔐 Login</span>
-        <span class="product-badge badge-p9">Prioridad 9</span>
+        <span class="product-name">🔐 Login</span>
+        <span class="product-badge badge-p12">Prioridad 12</span>
       </div>
       <div class="product-stats">
         <span class="stat"><strong>1</strong> función principal</span>
@@ -1386,20 +843,8 @@
               <span class="tree-label level-principal">Funcionalidades</span>
             </div>
             <ul>
-              <li>
-                <div class="tree-node color-blue">
-                  <span class="tree-toggle leaf">▶</span>
-                  <span class="tree-label">Login</span>
-                  <span class="tree-status status-por-disenar">Por diseñar</span>
-                </div>
-              </li>
-              <li>
-                <div class="tree-node color-violet">
-                  <span class="tree-toggle leaf">▶</span>
-                  <span class="tree-label">Cambiar clave</span>
-                  <span class="tree-status status-por-disenar">Por diseñar</span>
-                </div>
-              </li>
+              <li><div class="tree-node color-blue"><span class="tree-toggle leaf">▶</span><span class="tree-label">Login</span><span class="tree-status status-por-disenar">Por diseñar</span></div></li>
+              <li><div class="tree-node color-violet"><span class="tree-toggle leaf">▶</span><span class="tree-label">Cambiar clave</span><span class="tree-status status-por-disenar">Por diseñar</span></div></li>
             </ul>
           </li>
         </ul>
@@ -1409,30 +854,10 @@
     <div class="table-section">
       <h3>Registro de entregables</h3>
       <table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Función</th>
-            <th>Nivel</th>
-            <th>Estado</th>
-            <th>Fecha entrega</th>
-          </tr>
-        </thead>
+        <thead><tr><th>#</th><th>Función</th><th>Nivel</th><th>Estado</th><th>Fecha entrega</th></tr></thead>
         <tbody>
-          <tr data-status="por-disenar" data-level="principal" data-product="login" data-has-date="false">
-            <td class="td-id">1</td>
-            <td class="td-name">Login</td>
-            <td class="td-level level-principal">Principal</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
-          <tr data-status="por-disenar" data-level="sub-flujo" data-product="login" data-has-date="false">
-            <td class="td-id">1.1</td>
-            <td class="td-name" style="padding-left:28px;">↳ Cambiar clave</td>
-            <td class="td-level level-sub">Sub-flujo</td>
-            <td><span class="tree-status status-por-disenar">Por diseñar</span></td>
-            <td class="table-date date-placeholder">—</td>
-          </tr>
+          <tr data-status="por-disenar" data-level="principal" data-product="login" data-has-date="false"><td class="td-id">1</td><td class="td-name">Login</td><td class="td-level level-principal">Principal</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
+          <tr data-status="por-disenar" data-level="sub-flujo" data-product="login" data-has-date="false"><td class="td-id">1.1</td><td class="td-name" style="padding-left:28px;">↳ Cambiar clave</td><td class="td-level level-sub">Sub-flujo</td><td><span class="tree-status status-por-disenar">Por diseñar</span></td><td class="table-date date-placeholder">—</td></tr>
         </tbody>
       </table>
     </div>
